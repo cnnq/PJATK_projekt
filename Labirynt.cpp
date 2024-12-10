@@ -226,12 +226,13 @@ int main() {
 			drawNextFrame(previousFrame, currentFrame);
 
 			// ====
-			char key = _getch();
+			char key = tolower(_getch());
+			
 
-			if (key == 'w' && player.y > 0 && labyrinth.get(player.x, player.y - 1) == PATH) player.y--;
-			else if (key == 'a' && player.x > 0 && labyrinth.get(player.x - 1, player.y) == PATH) player.x--;
-			else if (key == 's' && player.y + 1 < labyrinth.height && labyrinth.get(player.x, player.y + 1) == PATH) player.y++;
-			else if (key == 'd' && player.x + 1 < labyrinth.width && labyrinth.get(player.x + 1, player.y) == PATH) player.x++;
+			if      ((key == 'w' || key == 'g') && player.y > 0 && labyrinth.get(player.x, player.y - 1) == PATH) player.y--;
+			else if ((key == 'a' || key == 'l') && player.x > 0 && labyrinth.get(player.x - 1, player.y) == PATH) player.x--;
+			else if ((key == 's' || key == 'd') && player.y + 1 < labyrinth.height && labyrinth.get(player.x, player.y + 1) == PATH) player.y++;
+			else if ((key == 'd' || key == 'p') && player.x + 1 < labyrinth.width && labyrinth.get(player.x + 1, player.y) == PATH) player.x++;
 
 			swap(previousFrame, currentFrame);
 
